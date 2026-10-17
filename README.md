@@ -1,6 +1,6 @@
-# Beyond Human WordPress Theme
+# Editorial WordPress Theme
 
-The standalone custom WordPress theme from the Beyond Human website project: PHP page templates,
+A standalone custom WordPress theme with PHP page templates,
 responsive styles, navigation, blog and case-study layouts, structured metadata and an AJAX contact form.
 
 This is a theme-only public edition. WordPress core, its database, uploads, private management tools,
@@ -11,13 +11,13 @@ WordPress content rather than bundled project records.
 ## Install
 
 1. Use a development WordPress installation with PHP 8.1+.
-2. Copy this repository's theme files into `wp-content/themes/beyond-human-wordpress-theme/`.
-3. Activate **Beyond Human** under Appearance → Themes.
+2. Copy this repository's theme files into `wp-content/themes/editorial-wordpress-theme/`.
+3. Activate **Editorial WordPress Theme** under Appearance → Themes.
 4. Create Home, About, Services, Case Studies, Blog and Contact pages; set a static front page under Settings → Reading.
 5. Configure menus, site title, content, branding and contact details for your own site.
 6. Verify the site's administrator email. The contact form uses WordPress `wp_mail` and sends to the configured administrator, not a bundled email destination.
 
-The theme retains Beyond Human example copy and styling; customise it before reuse. No live website
+The theme retains example copy and styling; customise it before reuse. No live website
 is deployed or modified by installing this source copy. Google Fonts is requested by the stylesheet.
 The original theme's GPL-2.0-or-later declaration is retained in `style.css`.
 
