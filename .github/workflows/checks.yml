@@ -1,0 +1,18 @@
+name: Theme syntax
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: rg --files -g '*.php' -0 | xargs -0 -n1 php -l
+      - run: node --check assets/js/main.js

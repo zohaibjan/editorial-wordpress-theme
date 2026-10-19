@@ -40,3 +40,7 @@ protection appropriate to your site. The public theme does not force-enable appl
 This is a separately prepared portfolio edition with fresh history. Private deployment settings,
 credentials, operational records, uploads, backups and organisation-specific assets are excluded.
 See [PUBLIC_EDITION.md](PUBLIC_EDITION.md). No deployment workflows are included.
+
+## Automated checks
+
+GitHub Actions checks PHP 8.3 and JavaScript syntax on pushes and pull requests. It does not deploy a website or exercise WordPress, mail delivery or browser behavior.
