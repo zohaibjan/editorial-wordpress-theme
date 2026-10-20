@@ -2,7 +2,7 @@
 /**
  * Template Name: Services Page
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  */
 
 get_header();

@@ -2,7 +2,7 @@
 /**
  * 404 Page Template
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  */
 
 get_header();

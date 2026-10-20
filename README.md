@@ -44,3 +44,5 @@ See [PUBLIC_EDITION.md](PUBLIC_EDITION.md). No deployment workflows are included
 ## Automated checks
 
 GitHub Actions checks PHP 8.3 and JavaScript syntax on pushes and pull requests. It does not deploy a website or exercise WordPress, mail delivery or browser behavior.
+
+The public theme uses neutral Editorial Studio branding. Edit the Contact page in WordPress to supply your own contact details; no third-party email, address or social profile is bundled.

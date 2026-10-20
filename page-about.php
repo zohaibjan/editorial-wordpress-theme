@@ -2,7 +2,7 @@
 /**
  * Template Name: About Page
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  */
 
 get_header();
@@ -11,7 +11,7 @@ get_header();
 <!-- Hero -->
 <section class="hero">
 	<div class="container">
-		<h1>About <span class="text-gradient">Beyond Human</span></h1>
+		<h1>About <span class="text-gradient">Editorial Studio</span></h1>
 		<p>We&rsquo;re a specialist AI studio that designs and builds custom applications for businesses. No off-the-shelf tools &mdash; every product is engineered around your specific workflows, data, and goals.</p>
 	</div>
 </section>

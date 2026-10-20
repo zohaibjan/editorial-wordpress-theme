@@ -1,5 +1,5 @@
 /**
- * Beyond Human — Main JavaScript
+ * Editorial Studio — Main JavaScript
  *
  * Handles: mobile menu toggle, contact form submission, scroll animations
  */
@@ -73,7 +73,7 @@
       // Use AJAX if WordPress localized data is available
       if (typeof bh_ajax !== 'undefined') {
         var data = new FormData();
-        data.append('action', 'beyondhuman_contact');
+        data.append('action', 'editorialstudio_contact');
         data.append('nonce', bh_ajax.nonce);
         data.append('name', name);
         data.append('email', email);

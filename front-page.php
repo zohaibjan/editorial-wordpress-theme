@@ -3,7 +3,7 @@
  * Template Name: Home Page
  * Front Page Template
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  */
 
 get_header();
@@ -19,7 +19,7 @@ get_header();
 			</span>
 		</div>
 		<h1>Tailored AI Apps Built <span class="text-gradient">for Your Business</span></h1>
-		<p>Beyond Human designs and delivers custom AI solutions that automate operations, improve decisions, and create measurable business outcomes.</p>
+		<p>Editorial Studio designs and delivers custom AI solutions that automate operations, improve decisions, and create measurable business outcomes.</p>
 		<div class="hero-actions">
 			<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="btn btn-primary btn-lg">Book a Consultation</a>
 			<a href="<?php echo esc_url( home_url( '/case-studies' ) ); ?>" class="btn btn-secondary btn-lg">View Case Studies</a>

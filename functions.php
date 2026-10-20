@@ -1,8 +1,8 @@
 <?php
 /**
- * Beyond Human Theme Functions
+ * Editorial Studio Theme Functions
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  * @version 1.0.0
  */
 
@@ -17,7 +17,7 @@ define( 'BH_THEME_URI', get_template_directory_uri() );
 /**
  * Theme Setup
  */
-function beyondhuman_setup() {
+function editorialstudio_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
@@ -29,19 +29,19 @@ function beyondhuman_setup() {
 	) );
 
 	register_nav_menus( array(
-		'primary'    => __( 'Primary Navigation', 'beyondhuman' ),
-		'footer'     => __( 'Footer Navigation', 'beyondhuman' ),
+		'primary'    => __( 'Primary Navigation', 'editorialstudio' ),
+		'footer'     => __( 'Footer Navigation', 'editorialstudio' ),
 	) );
 }
-add_action( 'after_setup_theme', 'beyondhuman_setup' );
+add_action( 'after_setup_theme', 'editorialstudio_setup' );
 
 /**
  * Enqueue Styles & Scripts
  */
-function beyondhuman_scripts() {
+function editorialstudio_scripts() {
 	// Google Fonts - Inter & JetBrains Mono
 	wp_enqueue_style(
-		'beyondhuman-fonts',
+		'editorialstudio-fonts',
 		'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap',
 		array(),
 		null
@@ -49,15 +49,15 @@ function beyondhuman_scripts() {
 
 	// Theme stylesheet
 	wp_enqueue_style(
-		'beyondhuman-style',
+		'editorialstudio-style',
 		get_stylesheet_uri(),
-		array( 'beyondhuman-fonts' ),
+		array( 'editorialstudio-fonts' ),
 		BH_THEME_VERSION
 	);
 
 	// Theme JavaScript
 	wp_enqueue_script(
-		'beyondhuman-main',
+		'editorialstudio-main',
 		BH_THEME_URI . '/assets/js/main.js',
 		array(),
 		BH_THEME_VERSION,
@@ -66,13 +66,13 @@ function beyondhuman_scripts() {
 
 	// Contact form nonce
 	if ( is_page_template( 'page-contact.php' ) || is_page( 'contact' ) ) {
-		wp_localize_script( 'beyondhuman-main', 'bh_ajax', array(
+		wp_localize_script( 'editorialstudio-main', 'bh_ajax', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 			'nonce'    => wp_create_nonce( 'bh_contact_nonce' ),
 		) );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'beyondhuman_scripts' );
+add_action( 'wp_enqueue_scripts', 'editorialstudio_scripts' );
 
 /**
  * Custom Nav Walker for header navigation
@@ -98,7 +98,7 @@ class BH_Nav_Walker extends Walker_Nav_Menu {
 /**
  * Fallback navigation if no menu is set
  */
-function beyondhuman_fallback_menu() {
+function editorialstudio_fallback_menu() {
 	$pages = array(
 		''             => 'Home',
 		'about'        => 'About',
@@ -123,7 +123,7 @@ function beyondhuman_fallback_menu() {
 /**
  * Handle contact form submission via AJAX
  */
-function beyondhuman_handle_contact() {
+function editorialstudio_handle_contact() {
 	check_ajax_referer( 'bh_contact_nonce', 'nonce' );
 
 	$name    = sanitize_text_field( wp_unslash( $_POST['name'] ?? '' ) );
@@ -161,21 +161,21 @@ function beyondhuman_handle_contact() {
 		wp_send_json_error( array( 'message' => 'Failed to send message. Please try again.' ) );
 	}
 }
-add_action( 'wp_ajax_beyondhuman_contact', 'beyondhuman_handle_contact' );
-add_action( 'wp_ajax_nopriv_beyondhuman_contact', 'beyondhuman_handle_contact' );
+add_action( 'wp_ajax_editorialstudio_contact', 'editorialstudio_handle_contact' );
+add_action( 'wp_ajax_nopriv_editorialstudio_contact', 'editorialstudio_handle_contact' );
 
 /**
  * Add body classes
  */
-function beyondhuman_body_classes( $classes ) {
+function editorialstudio_body_classes( $classes ) {
 	return $classes;
 }
-add_filter( 'body_class', 'beyondhuman_body_classes' );
+add_filter( 'body_class', 'editorialstudio_body_classes' );
 
 /**
  * Register Case Study Custom Post Type
  */
-function beyondhuman_register_cpts() {
+function editorialstudio_register_cpts() {
 	register_post_type( 'case_study', array(
 		'labels'      => array(
 			'name'          => 'Case Studies',
@@ -191,25 +191,25 @@ function beyondhuman_register_cpts() {
 		'menu_icon'   => 'dashicons-portfolio',
 	) );
 }
-add_action( 'init', 'beyondhuman_register_cpts' );
+add_action( 'init', 'editorialstudio_register_cpts' );
 
 /**
  * Comprehensive SEO: meta description, canonical, Open Graph, Twitter Card, Schema.org
  */
-function beyondhuman_seo_meta() {
-	$site_name   = 'Beyond Human';
+function editorialstudio_seo_meta() {
+	$site_name   = 'Editorial Studio';
 	$logo_url    = get_template_directory_uri() . '/assets/images/placeholder.svg';
 	$og_image    = get_template_directory_uri() . '/assets/images/placeholder.svg';
-	$default_desc = 'Beyond Human designs and delivers custom AI solutions that automate operations, improve decisions, and create measurable business outcomes. Slacks Creek, QLD, Australia.';
+	$default_desc = 'Editorial Studio designs and delivers custom AI solutions that automate operations, improve decisions, and create measurable business outcomes. ';
 
 	// Determine page-specific values
 	if ( is_front_page() ) {
-		$title       = 'Custom AI Solutions Built for Your Business | Beyond Human';
-		$description = 'Beyond Human designs and builds custom AI applications — workflow automation, document intelligence, AI agents, and decision support tools. Based in QLD, Australia.';
+		$title       = 'Custom AI Solutions Built for Your Business | Editorial Studio';
+		$description = 'Editorial Studio designs and builds custom AI applications — workflow automation, document intelligence, AI agents, and decision support tools. Based in QLD, Australia.';
 		$canonical   = home_url( '/' );
 		$og_type     = 'website';
 	} elseif ( is_singular( 'post' ) ) {
-		$title       = get_the_title() . ' | Beyond Human';
+		$title       = get_the_title() . ' | Editorial Studio';
 		$excerpt     = get_the_excerpt();
 		$description = $excerpt ?: wp_trim_words( wp_strip_all_tags( get_the_content() ), 28, '...' );
 		$canonical   = get_permalink();
@@ -221,41 +221,41 @@ function beyondhuman_seo_meta() {
 		$cs_category = get_post_meta( get_the_ID(), 'cs_category', true );
 		$cs_stat     = get_post_meta( get_the_ID(), 'cs_stat', true );
 		$cs_img      = get_post_meta( get_the_ID(), 'cs_hero_image', true );
-		$title       = get_the_title() . ' | AI Case Study | Beyond Human';
+		$title       = get_the_title() . ' | AI Case Study | Editorial Studio';
 		$excerpt     = get_the_excerpt();
-		$description = $excerpt ?: 'See how Beyond Human built ' . get_the_title() . ( $cs_stat ? ' — achieving ' . $cs_stat : '' ) . '. Custom AI solution for ' . ( $cs_category ?: 'enterprise' ) . '.';
+		$description = $excerpt ?: 'See how Editorial Studio built ' . get_the_title() . ( $cs_stat ? ' — achieving ' . $cs_stat : '' ) . '. Custom AI solution for ' . ( $cs_category ?: 'enterprise' ) . '.';
 		$canonical   = get_permalink();
 		$og_type     = 'article';
 		if ( $cs_img ) {
 			$og_image = $cs_img;
 		}
 	} elseif ( is_page( 'about' ) ) {
-		$title       = 'About Beyond Human | AI Solutions Studio, QLD Australia';
-		$description = 'We are a specialist AI solutions studio based in Slacks Creek, QLD, Australia. We design, build, and deploy custom AI applications for forward-thinking businesses.';
+		$title       = 'About Editorial Studio | AI Solutions Studio, QLD Australia';
+		$description = 'We are a specialist AI solutions studio for businesses. We design, build, and deploy custom AI applications for forward-thinking businesses.';
 		$canonical   = home_url( '/about' );
 		$og_type     = 'website';
 	} elseif ( is_page( 'services' ) ) {
-		$title       = 'AI Development Services | Workflow Automation & Agents | Beyond Human';
+		$title       = 'AI Development Services | Workflow Automation & Agents | Editorial Studio';
 		$description = 'Custom AI development services: workflow automation, document intelligence, AI agents, decision support, and real-time processing. Brisbane & Australia-wide.';
 		$canonical   = home_url( '/services' );
 		$og_type     = 'website';
 	} elseif ( is_page( 'contact' ) ) {
-		$title       = 'Contact Beyond Human | Book an AI Consultation';
-		$description = 'Get in touch with Beyond Human. Book a consultation to discuss your AI project. Suite 40, 5-7 200 Kingston Road, Slacks Creek, QLD 4124, Australia.';
+		$title       = 'Contact Editorial Studio | Book an AI Consultation';
+		$description = 'Get in touch with Editorial Studio. Book a consultation to discuss your AI project. ';
 		$canonical   = home_url( '/contact' );
 		$og_type     = 'website';
 	} elseif ( is_page( 'blog' ) ) {
-		$title       = 'AI Blog & Insights | Beyond Human';
+		$title       = 'AI Blog & Insights | Editorial Studio';
 		$description = 'Practical guides on AI agent development, LLMs, automation, cost of AI, and building applications that deliver real business results.';
 		$canonical   = home_url( '/blog' );
 		$og_type     = 'website';
 	} elseif ( is_page( 'case-studies' ) ) {
-		$title       = 'AI Case Studies | Custom AI Applications | Beyond Human';
+		$title       = 'AI Case Studies | Custom AI Applications | Editorial Studio';
 		$description = 'Real AI products solving real business problems. Browse our portfolio of custom AI applications across multiple industries.';
 		$canonical   = home_url( '/case-studies' );
 		$og_type     = 'website';
 	} else {
-		$title       = get_the_title() . ' | Beyond Human';
+		$title       = get_the_title() . ' | Editorial Studio';
 		$description = $default_desc;
 		$canonical   = get_permalink() ?: home_url( '/' );
 		$og_type     = 'website';
@@ -284,21 +284,9 @@ function beyondhuman_seo_meta() {
 	$org_schema = array(
 		'@context' => 'https://schema.org',
 		'@type'    => 'Organization',
-		'name'     => 'Beyond Human',
+		'name'     => get_bloginfo( 'name' ),
 		'url'      => home_url( '/' ),
 		'logo'     => $logo_url,
-		'email'    => 'support@beyondhuman.dev',
-		'address'  => array(
-			'@type'           => 'PostalAddress',
-			'streetAddress'   => 'Suite 40, 5-7 200 Kingston Road',
-			'addressLocality' => 'Slacks Creek',
-			'addressRegion'   => 'QLD',
-			'postalCode'      => '4124',
-			'addressCountry'  => 'AU',
-		),
-		'sameAs'   => array(
-			'https://www.linkedin.com/company/beyond-human-ai-dev/',
-		),
 	);
 
 	echo "\n<!-- Schema.org Organization -->\n";
@@ -317,12 +305,12 @@ function beyondhuman_seo_meta() {
 			'image'           => $og_image,
 			'author'          => array(
 				'@type' => 'Organization',
-				'name'  => 'Beyond Human',
+				'name'  => 'Editorial Studio',
 				'url'   => home_url( '/' ),
 			),
 			'publisher'       => array(
 				'@type' => 'Organization',
-				'name'  => 'Beyond Human',
+				'name'  => 'Editorial Studio',
 				'logo'  => array(
 					'@type' => 'ImageObject',
 					'url'   => $logo_url,
@@ -338,7 +326,7 @@ function beyondhuman_seo_meta() {
 		echo '<script type="application/ld+json">' . wp_json_encode( $article_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) . '</script>' . "\n";
 	}
 }
-add_action( 'wp_head', 'beyondhuman_seo_meta', 1 );
+add_action( 'wp_head', 'editorialstudio_seo_meta', 1 );
 
 /**
  * Disable emoji scripts (performance)

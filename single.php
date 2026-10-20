@@ -3,7 +3,7 @@
  * Single Post Template
  * Displays individual blog articles
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  */
 
 get_header();

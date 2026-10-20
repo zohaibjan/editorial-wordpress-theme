@@ -2,7 +2,7 @@
 /**
  * Single Case Study Template
  *
- * @package BeyondHuman
+ * @package EditorialStudio
  */
 
 get_header();
@@ -43,7 +43,7 @@ while ( have_posts() ) : the_post();
 <div style="max-width:72rem;margin:0 auto 0;padding:0 1.5rem;">
 	<img
 		src="<?php echo esc_url( $hero_image ); ?>"
-		alt="<?php echo esc_attr( get_the_title() ); ?> — Beyond Human AI case study"
+		alt="<?php echo esc_attr( get_the_title() ); ?> — Editorial Studio AI case study"
 		style="width:100%;height:420px;object-fit:cover;border-radius:calc(var(--radius)*2);display:block;box-shadow:0 12px 40px rgba(0,0,0,0.14);"
 		loading="eager"
 	/>
